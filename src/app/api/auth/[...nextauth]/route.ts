@@ -36,9 +36,27 @@ export const authOptions: NextAuthOptions = {
 
         // valida o login se a resposta for OK e houver um acces_token
         if (res.ok && data?.access_token) {
+          const userId = data.user?.id;
+
+          const userRes = await fetch(
+            `https://staging.api.ptmanager.oncrets.com/users/${userId}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${data.access_token}`,
+              },
+            }
+          );
+
+          const fullUserData = await userRes.json();
+
           return {
             id: data.user?.id || "user",
             email: credentials?.email,
+            name: fullUserData.name,
+            role: fullUserData,
+            companyId: fullUserData.companyId,
             accesToken: data.acces_token,
           };
         }
@@ -54,20 +72,34 @@ export const authOptions: NextAuthOptions = {
     // JWT chamado quando o token é criado ou atualizado
     async jwt({ token, user }: { token: JWT; user?: any }) {
       // adiciona o accesToken ao jwt caso o usuário tenha logado
-      if (user) token.accessToken = user.accessToken;
+      if (user) {
+        token.accessToken = user.accessToken;
+        token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
+        token.role = user.role;
+        token.companyId = user.companyId;
+      }
       return token;
     },
 
     // chamado sempre que uma sessão for carregada
     async session({ session, token }: { session: Session; token: JWT }) {
       session.accessToken = token.accessToken as string;
+      session.user = {
+        id: token.id,
+        email: token.email,
+        name: token.name,
+        role: token.role,
+        companyId: token.companyId,
+      };
       return session;
     },
   },
 
   // seta a pagina app/login como página default para login & JWT como estratégia de login
   pages: {
-    signIn: "login",
+    signIn: "/login",
   },
 
   session: {
