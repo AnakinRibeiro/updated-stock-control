@@ -1,5 +1,5 @@
 import Image from "next/image";
-import LoginForm from "./loginForm";
+import LoginForm from "@/components/composite/loginForm";
 import localFont from "next/font/local";
 
 const coreSans = localFont({

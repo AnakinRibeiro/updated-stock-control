@@ -3,9 +3,17 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-import { Button } from "../../components/ui/button";
+import { Button } from "../../ui/button";
 import { InputText } from "@/components/ui/inputText";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Rubik } from "next/font/google";
+
+const rubik = Rubik({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export default function LoginForm() {
   const router = useRouter();
@@ -38,6 +46,8 @@ export default function LoginForm() {
         width="large"
         onChange={(e) => setEmail(e.target.value)}
         required
+        type="text"
+        error={error}
       />
       <InputText
         model="primary"
@@ -46,7 +56,24 @@ export default function LoginForm() {
         width="large"
         onChange={(e) => setPassword(e.target.value)}
         required
+        type="password"
+        error={error}
       />
+
+      <div className="flex justify-between items-center">
+        <Checkbox
+          checked={false}
+          label="Remember Password"
+          onInputChange={() => undefined}
+        />
+
+        <Link
+          href="/"
+          className={`${rubik.className} text-sm text-[color:#006db6]`}
+        >
+          Forgot Password
+        </Link>
+      </div>
       <Button type="submit" color="primary" title="Sign in" size="large" />
     </form>
   );
