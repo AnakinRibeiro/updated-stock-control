@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Rubik } from "next/font/google";
 
-import { SidebarItem } from "./sidebarItem";
+import { SidebarItem } from "../../ui/sidebarItem";
 
 import { ChevronLeft } from "lucide-react";
 import { useState } from "react";

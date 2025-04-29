@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import { Sidebar } from "@/components/sidebar";
-import { Header } from "@/components/header";
+import { Sidebar } from "@/components/composite/sidebar";
+import { Header } from "@/components/composite/header";
 
 export function withPrivateLayout(Component: React.FC) {
   return async function PrivateLayoutWrapper() {

@@ -4,6 +4,9 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
+import { Button } from "../../components/ui/button";
+import { InputText } from "@/components/ui/inputText";
+
 export default function LoginForm() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -27,23 +30,24 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <input
-        type="email"
-        placeholder="Email"
+    <form onSubmit={handleLogin} className="flex flex-col mt-[50px] gap-[35px]">
+      <InputText
+        model="primary"
+        label="Email"
         value={email}
+        width="large"
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      <input
-        type="password"
-        placeholder="Senha"
+      <InputText
+        model="primary"
+        label="Password"
         value={password}
+        width="large"
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      <button type="submit">Entrar</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      <Button type="submit" color="primary" title="Sign in" size="large" />
     </form>
   );
 }
