@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 import localFont from "next/font/local";
 
 const sfProMedium = localFont({
-  src: "../../../public/fonts/SF-Pro-Display-Medium.otf",
+  src: "../../../../public/fonts/SF-Pro-Display-Medium.otf",
   display: "swap",
 });
 

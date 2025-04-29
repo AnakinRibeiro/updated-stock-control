@@ -10,6 +10,8 @@ import { InputText } from "@/components/ui/inputText";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Rubik } from "next/font/google";
 
+import { LoaderCircle } from "lucide-react";
+
 const rubik = Rubik({
   weight: "400",
   subsets: ["latin"],
@@ -20,15 +22,20 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setLoading(true);
 
     const result = await signIn("credentials", {
       redirect: false,
       email,
       password,
     });
+
+    setLoading(false);
 
     if (result?.ok) {
       router.push("/");
@@ -74,7 +81,13 @@ export default function LoginForm() {
           Forgot Password
         </Link>
       </div>
-      <Button type="submit" color="primary" title="Sign in" size="large" />
+      <Button
+        type="submit"
+        color="primary"
+        title={!loading ? "Sign in" : ""}
+        icon={loading && <LoaderCircle size={20} className="animate-spin" />}
+        size="large"
+      />
     </form>
   );
 }
