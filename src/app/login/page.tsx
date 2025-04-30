@@ -1,6 +1,10 @@
 import Image from "next/image";
-import LoginForm from "@/components/composite/loginForm";
 import localFont from "next/font/local";
+
+import LoginForm from "@/components/composite/loginForm";
+import LoginBannerSlider from "@/components/composite/loginBannerSlider";
+
+import items from "@/helpers/loginBannerMock";
 
 const coreSans = localFont({
   src: "../../../public/fonts/CoreSansM65Bold.otf",
@@ -53,6 +57,8 @@ export default function LoginPage() {
           }}
           priority
         />
+
+        <LoginBannerSlider items={items} />
       </div>
     </div>
   );
