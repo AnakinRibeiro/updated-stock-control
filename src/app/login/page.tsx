@@ -1,20 +1,9 @@
 import Image from "next/image";
-import localFont from "next/font/local";
 
 import LoginForm from "@/components/composite/loginForm";
 import LoginBannerSlider from "@/components/composite/loginBannerSlider";
 
 import items from "@/helpers/loginBannerMock";
-
-const coreSans = localFont({
-  src: "../../../public/fonts/CoreSansM65Bold.otf",
-  display: "swap",
-});
-
-const din = localFont({
-  src: "../../../public/fonts/DINCondensed-Light.ttf",
-  display: "swap",
-});
 
 export default function LoginPage() {
   return (
@@ -29,12 +18,10 @@ export default function LoginPage() {
           />
 
           <div className="flex flex-col mt-[70px] gap-[20px] text-slate-800">
-            <h1 className={`${coreSans.className} text-[36px]`}>
-              Welcome Back
-            </h1>
-            <span className={`${din.className} text-[20px]`}>
+            <h1 className={`font-core-sans text-[36px]`}>Welcome Back</h1>
+            <span className={`font-din-light text-[20px]`}>
               New to Oncrets?{" "}
-              <strong className="text-[color:#006db6]">
+              <strong className="text-oncrets-primary">
                 Create an account
               </strong>
               .

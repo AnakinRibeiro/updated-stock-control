@@ -1,6 +1,5 @@
 "use client";
 
-import localFont from "next/font/local";
 import {
   Home,
   Archive,
@@ -11,11 +10,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const sfProMedium = localFont({
-  src: "../../../../public/fonts/SF-Pro-Display-Medium.otf",
-  display: "swap",
-});
 
 type SideBarItemProps = {
   children: string;
@@ -52,10 +46,10 @@ export const SidebarItem = ({
 
   return (
     <Link
-      className={`flex ${sfProMedium.className} text-xs ${
+      className={`flex text-xs font-sf-pro ${
         isActive
-          ? "text-[color:#006db6] bg-[#ddf2ff] hover:bg-[#BADDF4]"
-          : "text-slate-800 hover:bg-[#EFEFEF]"
+          ? "text-oncrets-primary bg-oncrets-super-light hover:bg-oncrets-light"
+          : "text-slate-800 hover:bg-gray"
       } w-full h-[36px] p-[10px] gap-[6.5px] items-center rounded-sm transition-all duration-300`}
       href={href}
     >

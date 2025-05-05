@@ -8,14 +8,8 @@ import Link from "next/link";
 import { Button } from "../../ui/button";
 import { InputText } from "@/components/ui/inputText";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Rubik } from "next/font/google";
 
 import { LoaderCircle } from "lucide-react";
-
-const rubik = Rubik({
-  weight: "400",
-  subsets: ["latin"],
-});
 
 export default function LoginForm() {
   const router = useRouter();
@@ -74,10 +68,7 @@ export default function LoginForm() {
           onInputChange={() => undefined}
         />
 
-        <Link
-          href="/"
-          className={`${rubik.className} text-sm text-[color:#006db6]`}
-        >
+        <Link href="/" className={`font-rubik text-sm text-oncrets-primary`}>
           Forgot Password
         </Link>
       </div>

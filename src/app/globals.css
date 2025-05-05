@@ -1,7 +1,22 @@
+/* styles/globals.css para Tailwind v4 */
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
 @import "tailwindcss";
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme {
+  --color-white: #ffffff;
+  --color-super-light-gray: #fcfcfc;
+  --color-light-gray: #f6f6f6;
+  --color-gray: #eeeeee;
+  --color-darker-gray: #9a9a9a;
+  --color-black: #324051;
+  --color-oncrets-primary: #006db6;
+  --color-oncrets-darker: #00548d;
+  --color-oncrets-light: #baddf4;
+  --color-oncrets-super-light: #ddf2ff;
+
+  --font-sf-pro: var(--font-sf-pro-medium), sans-serif;
+  --font-core-sans: var(--font-core-sans), sans-serif;
+  --font-din-light: var(--font-din), sans-serif;
+  --font-rubik: var(--font-rubik);
 }

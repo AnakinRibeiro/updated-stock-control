@@ -9,12 +9,6 @@ import {
   Package,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
-import localFont from "next/font/local";
-
-const sfProMedium = localFont({
-  src: "../../../../public/fonts/SF-Pro-Display-Medium.otf",
-  display: "swap",
-});
 
 const iconsMap: { [key: string]: React.ReactNode } = {
   "/": <Home size={20} className="text-slate-800" />,
@@ -39,7 +33,7 @@ export const PageName = () => {
   return (
     <div className="flex items-center gap-[6px]">
       {currentIcon}
-      <h1 className={`text-base text-slate-800 ${sfProMedium.className}`}>
+      <h1 className={`text-base text-slate-800 font-sf-pro`}>
         {pathname === "/"
           ? "Home"
           : capitalizeFirstLetter(pathname.replace("/", ""))}

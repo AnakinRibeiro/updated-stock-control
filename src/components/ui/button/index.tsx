@@ -3,13 +3,6 @@
 import { ButtonHTMLAttributes } from "react";
 import clsx from "clsx";
 
-import { Rubik } from "next/font/google";
-
-const rubik = Rubik({
-  weight: "400",
-  subsets: ["latin"],
-});
-
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   color: "primary" | "secondary";
   size?: "small" | "medium" | "large";
@@ -26,8 +19,8 @@ const sizeModifiers = {
 };
 
 const colorModifiers = {
-  primary: "bg-[#006db6] text-white border-none hover:bg-[#00548d]",
-  secondary: "bg-white text-[#006db6] border border-[#006db6]",
+  primary: "bg-oncrets-primary text-white border-none hover:bg-oncrets-darker",
+  secondary: "bg-white text-oncrets-primary border border-oncrets-primary",
 };
 
 export const Button = ({
@@ -43,11 +36,10 @@ export const Button = ({
     <button
       {...props}
       className={clsx(
-        "h-[40px] flex rounded-md items-center justify-center cursor-pointer text-[14px] gap-[4px] p-[10px]",
+        "h-[40px] flex rounded-md items-center justify-center cursor-pointer text-[14px] gap-[4px] p-[10px] font-rubik",
         sizeModifiers[size],
         colorModifiers[color],
-        isDisabled && "opacity-50 cursor-not-allowed",
-        rubik.className
+        isDisabled && "opacity-50 cursor-not-allowed"
       )}
     >
       {!!icon && icon}

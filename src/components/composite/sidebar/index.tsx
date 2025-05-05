@@ -1,17 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Rubik } from "next/font/google";
-
-import { SidebarItem } from "../../ui/sidebarItem";
-
 import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
 
-const rubik = Rubik({
-  weight: "400",
-  subsets: ["latin"],
-});
+import { SidebarItem } from "../../ui/sidebarItem";
 
 export const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -51,7 +44,7 @@ export const Sidebar = () => {
         <div className={`w-full flex flex-col gap-[12px] mt-[22px]`}>
           {!collapsed && (
             <span
-              className={`${rubik.className} uppercase text-[10.5px] text-gray-400`}
+              className={`font-rubik uppercase text-[10.5px] text-gray-400`}
             >
               menu principal
             </span>

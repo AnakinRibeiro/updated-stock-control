@@ -1,12 +1,6 @@
 "use client";
 
-import { Rubik } from "next/font/google";
 import { useState } from "react";
-
-const rubik = Rubik({
-  weight: "400",
-  subsets: ["latin"],
-});
 
 export type CheckboxProps = {
   label: string;
@@ -30,9 +24,7 @@ export const Checkbox = ({ label, onInputChange, checked }: CheckboxProps) => {
         onChange={(e) => handleCheck(e.target.checked)}
         checked={value}
       />
-      <label className={`${rubik.className} text-slate-800 text-sm`}>
-        {label}
-      </label>
+      <label className={`font-rubik text-black text-sm`}>{label}</label>
     </div>
   );
 };

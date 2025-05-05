@@ -3,13 +3,6 @@
 import { useState, InputHTMLAttributes } from "react";
 import clsx from "clsx";
 
-import { Rubik } from "next/font/google";
-
-const rubik = Rubik({
-  weight: "400",
-  subsets: ["latin"],
-});
-
 type OnInputChangeProps = (value: string, index: number) => void;
 export type InputTextProps = {
   label?: string;
@@ -56,7 +49,7 @@ export const InputText = ({
   };
 
   return (
-    <div className={`${rubik.className} flex flex-col text-base text-gray-500`}>
+    <div className={`font-rubik flex flex-col text-base text-gray-500`}>
       {!!label && (
         <label className={`${!!error && "text-red-400"}`}>{label}</label>
       )}
