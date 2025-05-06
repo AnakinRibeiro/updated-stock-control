@@ -1,34 +1,15 @@
+"use client";
+
 import { CircleDollarSign } from "lucide-react";
+import Skeleton from "@mui/material/Skeleton";
+
 import { formatPrice } from "@/helpers/functions";
-
+import { useTotalizers } from "@/hooks/useSolicitations";
 import Graph from "@/components/ui/graph";
+import TotalizerValue from "@/components/ui/totalizerValue";
 
-type TotalizerProps = {
-  _id: string;
-  priceSum: number;
-  count: number;
-};
-
-type TotalizerRequestProps = {
-  pending: TotalizerProps;
-  cancelled: TotalizerProps;
-  concluded: TotalizerProps;
-};
-
-const SolicitationsTotalizers = async () => {
-  const data = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL_PRODUCTION}/request/totalizers`,
-    {
-      next: {
-        revalidate: 60,
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-
-  const totalizers = (await data.json()) as TotalizerRequestProps;
+const SolicitationsTotalizers = () => {
+  const { data, isLoading } = useTotalizers();
 
   return (
     <div className="w-full flex">
@@ -38,44 +19,51 @@ const SolicitationsTotalizers = async () => {
         </div>
 
         <div className="flex flex-col justify-start gap-[10px]">
-          <span className={`font-rubik text-xs uppercase text-black`}>
-            valor total das solicitações
-          </span>
-          <h1
-            className={`font-rubik text-[20.5px] uppercase text-slate-700 font-medium`}
-          >
-            {formatPrice(
-              totalizers.concluded.priceSum +
-                totalizers.pending.priceSum +
-                totalizers.cancelled.priceSum
-            )}
-          </h1>
+          {data && !isLoading ? (
+            <TotalizerValue
+              label="valor total das solicitações"
+              value={formatPrice(
+                data.concluded.priceSum +
+                  data.pending.priceSum +
+                  data.cancelled.priceSum
+              )}
+            />
+          ) : (
+            <>
+              <Skeleton variant="rounded" width={220} height={12} />
+              <Skeleton variant="rounded" width={180} height={22} />
+            </>
+          )}
         </div>
       </div>
 
-      <div className="w-[50%] ml-[26px]">
-        <Graph
-          data={[
-            {
-              label: "cancelled",
-              qty: totalizers.cancelled.count,
-              value: totalizers.cancelled.priceSum,
-              color: "#ef4444",
-            },
-            {
-              label: "pending",
-              qty: totalizers.pending.count,
-              value: totalizers.pending.priceSum,
-              color: "#000",
-            },
-            {
-              label: "concluded",
-              qty: totalizers.concluded.count,
-              value: totalizers.concluded.priceSum,
-              color: "#22c55e",
-            },
-          ]}
-        />
+      <div className="w-[50%] ml-[26px] flex items-center">
+        {data && !isLoading ? (
+          <Graph
+            data={[
+              {
+                label: "cancelled",
+                qty: data.cancelled.count,
+                value: data.cancelled.priceSum,
+                color: "bg-red-500",
+              },
+              {
+                label: "pending",
+                qty: data.pending.count,
+                value: data.pending.priceSum,
+                color: "bg-light-black",
+              },
+              {
+                label: "concluded",
+                qty: data.concluded.count,
+                value: data.concluded.priceSum,
+                color: "bg-emerald-400",
+              },
+            ]}
+          />
+        ) : (
+          <Skeleton variant="rounded" width={600} height={12} />
+        )}
       </div>
     </div>
   );

@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
+import { capitalizeFirstLetter } from "@/helpers/functions";
+
 const iconsMap: { [key: string]: React.ReactNode } = {
   "/": <Home size={20} className="text-slate-800" />,
   "/solicitations": <ScrollText size={20} className="text-slate-800" />,
@@ -24,11 +26,6 @@ export const PageName = () => {
   const currentIcon = iconsMap[pathname] || (
     <Home size={20} className="text-slate-800" />
   );
-
-  const capitalizeFirstLetter = (str: string) => {
-    if (!str) return "";
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
 
   return (
     <div className="flex items-center gap-[6px]">

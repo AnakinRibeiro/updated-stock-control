@@ -4,6 +4,8 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { Rubik } from "next/font/google";
 
+import ReactQueryProvider from "@/lib/react-query-provider";
+
 const rubik = Rubik({
   weight: ["400", "500"],
   subsets: ["latin"],
@@ -43,7 +45,9 @@ export default async function RootLayout({
       lang="en"
       className={`${sfProMedium.variable} ${coreSans.variable} ${din.variable} ${rubik.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+      </body>
     </html>
   );
 }
