@@ -13,28 +13,26 @@ const SolicitationsTotalizers = () => {
 
   return (
     <div className="w-full flex">
-      <div className="flex gap-[10px] border-r border-gray-200 pr-[26px]">
+      <div className="flex gap-[10px] border-r border-gray-200 pr-[26px] ">
         <div className="w-[28px] h-[28px] flex rounded-full bg-gray-100 items-center justify-center mt-[2px]">
           <CircleDollarSign size={20} className="text-oncrets-primary" />
         </div>
 
-        <div className="flex flex-col justify-start gap-[10px]">
-          {data && !isLoading ? (
-            <TotalizerValue
-              label="valor total das solicitações"
-              value={formatPrice(
-                data.concluded.priceSum +
-                  data.pending.priceSum +
-                  data.cancelled.priceSum
-              )}
-            />
-          ) : (
-            <>
-              <Skeleton variant="rounded" width={220} height={12} />
-              <Skeleton variant="rounded" width={180} height={22} />
-            </>
-          )}
-        </div>
+        {data && !isLoading ? (
+          <TotalizerValue
+            label="valor total das solicitações"
+            value={formatPrice(
+              data.concluded.priceSum +
+                data.pending.priceSum +
+                data.cancelled.priceSum
+            )}
+          />
+        ) : (
+          <div className="flex flex-col justify-start gap-[10px] items-center">
+            <Skeleton variant="rounded" width={220} height={12} />
+            <Skeleton variant="rounded" width={180} height={22} />
+          </div>
+        )}
       </div>
 
       <div className="w-[50%] ml-[26px] flex items-center">

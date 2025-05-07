@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 import { capitalizeFirstLetter, formatPrice } from "@/helpers/functions";
 
-type ItemProps = {
+export type ItemProps = {
   label: string;
   qty: number;
   value: number;

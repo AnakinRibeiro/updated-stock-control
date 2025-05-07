@@ -3,7 +3,7 @@ import { fn } from "@storybook/test";
 import { Checkbox } from ".";
 
 export default {
-  title: "Components/Checkbox",
+  title: "Form/Checkbox",
   component: Checkbox,
   tags: ["autodocs"],
   args: {

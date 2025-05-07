@@ -3,11 +3,14 @@
 import Image from "next/image";
 import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 import { SidebarItem } from "../../ui/sidebarItem";
 
 export const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
+
+  const pathname = usePathname();
 
   return (
     <aside
@@ -49,20 +52,36 @@ export const Sidebar = () => {
               menu principal
             </span>
           )}
-          <SidebarItem icon="home" href="/" collapsed={collapsed}>
+          <SidebarItem
+            icon="home"
+            href="/"
+            collapsed={collapsed}
+            isActive={pathname === "/"}
+          >
             Home
           </SidebarItem>
           <SidebarItem
             icon="solicitations"
             href="/solicitations"
             collapsed={collapsed}
+            isActive={pathname === "/solicitations"}
           >
             Solicitations
           </SidebarItem>
-          <SidebarItem icon="products" href="/products" collapsed={collapsed}>
+          <SidebarItem
+            icon="products"
+            href="/products"
+            collapsed={collapsed}
+            isActive={pathname === "/products"}
+          >
             Products
           </SidebarItem>
-          <SidebarItem icon="stocks" href="/stocks" collapsed={collapsed}>
+          <SidebarItem
+            icon="stocks"
+            href="/stocks"
+            collapsed={collapsed}
+            isActive={pathname === "/stocks"}
+          >
             Stocks
           </SidebarItem>
         </div>
@@ -70,10 +89,20 @@ export const Sidebar = () => {
 
       <div>
         <div className="w-full flex flex-col gap-[12px] pb-[22px]">
-          <SidebarItem icon="settings" href="/settings" collapsed={collapsed}>
+          <SidebarItem
+            icon="settings"
+            href="/settings"
+            collapsed={collapsed}
+            isActive={pathname === "/settings"}
+          >
             Settings
           </SidebarItem>
-          <SidebarItem icon="support" href="/support" collapsed={collapsed}>
+          <SidebarItem
+            icon="support"
+            href="/support"
+            collapsed={collapsed}
+            isActive={pathname === "/support"}
+          >
             Help & Support
           </SidebarItem>
         </div>

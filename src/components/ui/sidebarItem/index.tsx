@@ -9,7 +9,7 @@ import {
   Package,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 type SideBarItemProps = {
   children: string;
@@ -22,6 +22,7 @@ type SideBarItemProps = {
     | "support";
   href: string;
   collapsed: boolean;
+  isActive: boolean;
 };
 
 const icons = {
@@ -38,19 +39,19 @@ export const SidebarItem = ({
   icon,
   href,
   collapsed,
+  isActive,
 }: SideBarItemProps) => {
-  const pathname = usePathname();
-  const isActive = pathname === href;
-
   const Icon = icons[icon];
 
   return (
     <Link
-      className={`flex text-xs font-sf-pro ${
+      className={clsx(
+        "flex text-xs font-sf-pro  w-full h-[36px] p-[10px] gap-[6.5px] items-center rounded-sm transition-all duration-300",
         isActive
           ? "text-oncrets-primary bg-oncrets-super-light hover:bg-oncrets-light"
-          : "text-slate-800 hover:bg-gray"
-      } w-full h-[36px] p-[10px] gap-[6.5px] items-center rounded-sm transition-all duration-300`}
+          : "text-slate-800 hover:bg-gray",
+        collapsed && "justify-center"
+      )}
       href={href}
     >
       {Icon && <Icon size={16} />}

@@ -3,7 +3,7 @@ import { fn } from "@storybook/test";
 import { Button } from ".";
 
 export default {
-  title: "Components/Button",
+  title: "UI/Button",
   component: Button,
   tags: ["autodocs"],
   args: {

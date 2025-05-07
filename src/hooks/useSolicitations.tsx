@@ -23,8 +23,6 @@ export function useTotalizers() {
       );
 
       const json = await data.json();
-      console.log(json);
-
       return json;
     },
     staleTime: 60_000,

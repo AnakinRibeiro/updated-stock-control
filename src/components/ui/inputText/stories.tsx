@@ -3,7 +3,7 @@ import { fn } from "@storybook/test";
 import { InputText } from ".";
 
 export default {
-  title: "Components/InputText",
+  title: "Form/InputText",
   component: InputText,
   tags: ["autodocs"],
   args: {

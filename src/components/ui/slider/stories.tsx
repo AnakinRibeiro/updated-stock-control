@@ -4,7 +4,7 @@ import { Settings } from "react-slick";
 import LoginBanner from "@/components/composite/loginBanner";
 
 export default {
-  title: "Components/Slider",
+  title: "UI/Slider",
   component: Slider,
 } satisfies Meta<typeof Slider>;
 
