@@ -27,7 +27,7 @@ const BaseSearchBar = ({
         onKeyDown={onKeyDown}
         placeholder={placeholder}
         title="search-bar"
-        className="absolute z-0 w-full h-[40px] border border-gray-200 bg-light-gray rounded-full pl-[32px] font-rubik text-[12.5px] text-black"
+        className="absolute z-0 w-full h-[38px] border border-gray-200 bg-light-gray rounded-full pl-[32px] font-rubik text-[12.5px] text-black"
       />
     </div>
   );

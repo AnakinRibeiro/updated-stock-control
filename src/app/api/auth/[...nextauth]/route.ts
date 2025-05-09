@@ -57,7 +57,7 @@ export const authOptions: NextAuthOptions = {
             name: fullUserData.name,
             role: fullUserData,
             companyId: fullUserData.companyId,
-            accesToken: data.acces_token,
+            accessToken: data.access_token,
           };
         }
 

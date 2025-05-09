@@ -36,7 +36,7 @@ export const Button = ({
     <button
       {...props}
       className={clsx(
-        "h-[40px] flex rounded-md items-center justify-center cursor-pointer text-[14px] gap-[4px] p-[10px] font-rubik",
+        "h-[38px] flex rounded-md items-center justify-center cursor-pointer text-[14px] gap-[4px] p-[10px] font-rubik",
         sizeModifiers[size],
         colorModifiers[color],
         isDisabled && "opacity-50 cursor-not-allowed"

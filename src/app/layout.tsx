@@ -7,9 +7,15 @@ import { Rubik } from "next/font/google";
 import ReactQueryProvider from "@/lib/react-query-provider";
 
 const rubik = Rubik({
-  weight: ["400", "500"],
+  weight: ["300", "400", "500"],
   subsets: ["latin"],
   variable: "--font-rubik",
+});
+
+const sfProRegular = localFont({
+  src: "../../public/fonts/SF-Pro-Display-Regular.otf",
+  display: "swap",
+  variable: "--font-sf-pro-regular",
 });
 
 const sfProMedium = localFont({
@@ -43,7 +49,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sfProMedium.variable} ${coreSans.variable} ${din.variable} ${rubik.variable}`}
+      className={`${sfProMedium.variable} ${sfProRegular.variable} ${coreSans.variable} ${din.variable} ${rubik.variable}`}
     >
       <body>
         <ReactQueryProvider>{children}</ReactQueryProvider>

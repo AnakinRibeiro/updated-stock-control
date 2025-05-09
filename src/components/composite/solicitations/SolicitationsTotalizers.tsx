@@ -11,6 +11,8 @@ import TotalizerValue from "@/components/ui/totalizerValue";
 const SolicitationsTotalizers = () => {
   const { data, isLoading } = useTotalizers();
 
+  console.log("running...");
+
   return (
     <div className="w-full flex">
       <div className="flex gap-[10px] border-r border-gray-200 pr-[26px] ">

@@ -16,8 +16,13 @@
   --color-oncrets-light: #baddf4;
   --color-oncrets-super-light: #ddf2ff;
 
+  --font-sf-pro-regular: var(--font-sf-pro-regular), sans-serif;
   --font-sf-pro: var(--font-sf-pro-medium), sans-serif;
   --font-core-sans: var(--font-core-sans), sans-serif;
   --font-din-light: var(--font-din), sans-serif;
   --font-rubik: var(--font-rubik);
+}
+
+.font-din-light {
+  font-family: var(--font-din-light), sans-serif;
 }
