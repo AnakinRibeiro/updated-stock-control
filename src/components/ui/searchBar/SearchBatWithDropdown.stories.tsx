@@ -17,24 +17,22 @@ const mockOptions: Option[] = [
 ];
 
 // Componente wrapper que simula a lógica de digitação
-const SearchWithMock = (args: any) => {
-  const [options, setOptions] = useState<Option[]>([]);
+const SearchWithMock = () => {
+  const [options, setOptions] = useState<Option[]>(mockOptions);
 
   const handleSearch = (query: string) => {
     const results = mockOptions.filter((item) =>
       item.label.toLowerCase().includes(query.toLowerCase())
     );
     setOptions(results);
-    args.onSearch?.(query); // dispara action se definida
   };
 
   return (
     <SearchBarWithDropdown<Option>
-      {...args}
-      options={mockOptions}
+      options={options}
       onSearch={handleSearch}
       onSelect={(item) => {
-        args.onSelect(item); // dispara action
+        console.log(item); // dispara action
       }}
       renderOption={(item) => <span>{item.label}</span>}
     />

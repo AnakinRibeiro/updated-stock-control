@@ -1,4 +1,4 @@
-import type { Meta, StoryObj, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { Slider } from ".";
 import { Settings } from "react-slick";
 import LoginBanner from "@/components/composite/loginBanner";
