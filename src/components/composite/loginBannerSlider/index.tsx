@@ -10,12 +10,26 @@ import LoginBanner, {
   LoginBannerProps,
 } from "@/components/composite/loginBanner";
 
+export type SlickArrowProps = {
+  currentSlide?: number;
+  slideCount?: number;
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: React.MouseEventHandler<HTMLSpanElement>;
+};
+
 const SlickButtonFix = ({
-  currentSlide,
-  slideCount,
+  currentSlide: _currentSlide,
+  slideCount: _slideCount,
   children,
   ...props
-}: any) => <span {...props}>{children}</span>;
+}: SlickArrowProps) => {
+  void _currentSlide;
+  void _slideCount;
+
+  return <span {...props}>{children}</span>;
+};
 
 const settings: SliderSettings = {
   slidesToShow: 1,
