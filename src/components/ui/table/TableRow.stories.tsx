@@ -64,7 +64,7 @@ export default {
 type Story = StoryObj<typeof TableRow<SolicitationProps>>;
 
 export const Default: Story = {
-  render: (args) => (
+  render: () => (
     <table className="w-full border-collapse text-sm">
       <thead className="w-full">
         <tr className="h-[60px] text-center text-gray-400 w-full">

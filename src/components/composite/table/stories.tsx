@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Table from ".";
 import { TableColumn } from "@/types/table";
-import { solicitationsMock } from "@/utils/mocks";
 import { SolicitationProps } from "@/types/solicitations";
 
 const mockContent: SolicitationProps[] = [

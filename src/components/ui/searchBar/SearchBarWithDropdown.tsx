@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import SearchBarBase from "./BaseSearchBar";
 
 import { ClickAwayListener } from "@mui/material";

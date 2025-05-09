@@ -41,6 +41,7 @@ export const Button = ({
         colorModifiers[color],
         isDisabled && "opacity-50 cursor-not-allowed"
       )}
+      onClick={onClick}
     >
       {!!icon && icon}
       {!!title && title}

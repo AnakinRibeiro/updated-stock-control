@@ -8,8 +8,6 @@ export default {
   component: Slider,
 } satisfies Meta<typeof Slider>;
 
-type Story = StoryObj<typeof Slider>;
-
 const settings: Settings = {
   dots: true,
   infinite: true,

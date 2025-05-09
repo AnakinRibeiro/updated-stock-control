@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 import BaseSearchBar from "./BaseSearchBar";
-import SearchBarWithDropdown from "./SearchBarWithDropdown";
 
 type SearchBarProps = {
   onSubmit: (value: string) => void;

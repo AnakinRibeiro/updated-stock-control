@@ -93,7 +93,7 @@ const SolicitationsPanel = () => {
   const { data, isLoading } = useSolicitations();
 
   const handleSearch = (value: string) => {
-    console.log("Pesquisando...");
+    console.log(value);
   };
 
   return (
