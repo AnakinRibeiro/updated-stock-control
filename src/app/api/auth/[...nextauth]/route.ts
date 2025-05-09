@@ -2,7 +2,7 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { JWT } from "next-auth/jwt";
-import { Session } from "next-auth";
+import { Session, User } from "next-auth";
 
 // handler de autenticação
 export const authOptions: NextAuthOptions = {
@@ -70,13 +70,13 @@ export const authOptions: NextAuthOptions = {
   // callbacks de customização para token e sessão
   callbacks: {
     // JWT chamado quando o token é criado ou atualizado
-    async jwt({ token, user }: { token: JWT; user?: any }) {
+    async jwt({ token, user }: { token: JWT; user?: User }) {
       // adiciona o accesToken ao jwt caso o usuário tenha logado
       if (user) {
         token.accessToken = user.accessToken;
         token.id = user.id;
-        token.email = user.email;
-        token.name = user.name;
+        token.email = user.email ?? undefined;
+        token.name = user.name ?? undefined;
         token.role = user.role;
         token.companyId = user.companyId;
       }

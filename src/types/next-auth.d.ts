@@ -1,6 +1,4 @@
-// types/next-auth.d.ts
-import NextAuth from "next-auth";
-import { JWT } from "next-auth/jwt";
+// import { JWT } from "next-auth/jwt";
 
 declare module "next-auth" {
   interface Session {
@@ -22,6 +20,7 @@ declare module "next-auth" {
     image?: string | null;
     role?: string;
     companyId?: string;
+    accessToken?: string; // ✅ importante para o JWT callback
   }
 }
 
@@ -35,3 +34,5 @@ declare module "next-auth/jwt" {
     companyId?: string;
   }
 }
+
+export {};
