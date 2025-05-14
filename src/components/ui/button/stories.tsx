@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { Button } from ".";
+import { LogOut } from "lucide-react";
 
 export default {
   title: "UI/Button",
@@ -23,7 +24,7 @@ export default {
       options: ["primary", "secondary"],
       description: "Defines button color",
       table: {
-        type: { summary: "primary | secondary" },
+        type: { summary: "primary | secondary | logout" },
         defaultValue: { summary: "primary" },
       },
     },
@@ -70,6 +71,14 @@ export const Secondary: Story = {
   args: {
     color: "secondary",
     title: "Botão Secundário",
+  },
+};
+
+export const Logout: Story = {
+  args: {
+    color: "logout",
+    title: "Sair",
+    icon: <LogOut size={16} />,
   },
 };
 

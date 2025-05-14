@@ -10,6 +10,7 @@ declare module "next-auth" {
       image?: string | null;
       role?: string;
       companyId?: string;
+      image: any;
     };
   }
 
@@ -20,7 +21,8 @@ declare module "next-auth" {
     image?: string | null;
     role?: string;
     companyId?: string;
-    accessToken?: string; // ✅ importante para o JWT callback
+    accessToken?: string;
+    image: any;
   }
 }
 
@@ -32,6 +34,7 @@ declare module "next-auth/jwt" {
     name?: string;
     role?: string;
     companyId?: string;
+    image: any;
   }
 }
 

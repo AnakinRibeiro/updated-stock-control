@@ -4,6 +4,7 @@ import type { NextAuthOptions } from "next-auth";
 
 import { JWT } from "next-auth/jwt";
 import { Session, User } from "next-auth";
+import jwt from "jsonwebtoken";
 
 // handler de autenticação
 export const authOptions: NextAuthOptions = {
@@ -37,29 +38,32 @@ export const authOptions: NextAuthOptions = {
 
         // valida o login se a resposta for OK e houver um acces_token
         if (res.ok && data?.access_token) {
-          const userId = data.user?.id;
+          const decoded = jwt.decode(data.access_token);
 
-          const userRes = await fetch(
-            `https://staging.api.ptmanager.oncrets.com/users/${userId}`,
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${data.access_token}`,
-              },
-            }
-          );
+          if (decoded?.sub) {
+            const userRes = await fetch(
+              `https://staging.api.ptmanager.oncrets.com/users/${decoded.sub}`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${data.access_token}`,
+                },
+              }
+            );
 
-          const fullUserData = await userRes.json();
+            const fullUserData = await userRes.json();
 
-          return {
-            id: data.user?.id || "user",
-            email: credentials?.email,
-            name: fullUserData.name,
-            role: fullUserData,
-            companyId: fullUserData.companyId,
-            accessToken: data.access_token,
-          };
+            return {
+              id: data.user?.id || "user",
+              email: credentials?.email,
+              name: fullUserData.name,
+              role: fullUserData.role,
+              companyId: fullUserData.companyId,
+              image: fullUserData.image,
+              accessToken: data.access_token,
+            };
+          }
         }
 
         // retorna null se a autenticação falhar
@@ -80,6 +84,7 @@ export const authOptions: NextAuthOptions = {
         token.name = user.name ?? undefined;
         token.role = user.role;
         token.companyId = user.companyId;
+        token.image = user.image;
       }
       return token;
     },
@@ -93,6 +98,7 @@ export const authOptions: NextAuthOptions = {
         name: token.name,
         role: token.role,
         companyId: token.companyId,
+        image: token.image,
       };
       return session;
     },

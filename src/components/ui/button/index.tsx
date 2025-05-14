@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes } from "react";
 import clsx from "clsx";
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  color: "primary" | "secondary";
+  color: "primary" | "secondary" | "logout";
   size?: "small" | "medium" | "large";
   title: string;
   icon?: React.ReactNode;
@@ -21,6 +21,7 @@ const sizeModifiers = {
 const colorModifiers = {
   primary: "bg-oncrets-primary text-white border-none hover:bg-oncrets-darker",
   secondary: "bg-white text-oncrets-primary border border-oncrets-primary",
+  logout: "bg-gray text-black hover:bg-gray-300",
 };
 
 export const Button = ({
@@ -36,7 +37,7 @@ export const Button = ({
     <button
       {...props}
       className={clsx(
-        "h-[38px] flex rounded-md items-center justify-center cursor-pointer text-[14px] gap-[4px] p-[10px] font-rubik",
+        "h-[38px] flex rounded-md items-center justify-center cursor-pointer text-[12.5px] gap-[5px] p-[10px] font-rubik transition-all duration-300",
         sizeModifiers[size],
         colorModifiers[color],
         isDisabled && "opacity-50 cursor-not-allowed"
