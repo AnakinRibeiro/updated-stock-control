@@ -39,7 +39,7 @@ export const UserDropdown = ({ userData }: Props) => {
 
   return (
     <div className="flex relative items-center z-1 gap-[15px]">
-      {userData?.image && (
+      {userData?.image ? (
         <Image
           src={userData.image.location}
           height={30}
@@ -51,13 +51,17 @@ export const UserDropdown = ({ userData }: Props) => {
           }}
           onClick={() => setOpen(true)}
         />
+      ) : (
+        <div className="flex items-center justify-center rounded-[50px] w-[30px] h-[30px] border border-[#DFDFDF]">
+          {userData?.name?.substring(0, 2).toUpperCase()}
+        </div>
       )}
 
       {open && (
         <ClickAwayListener onClickAway={() => setOpen(false)}>
           <div className="flex flex-col absolute w-[270px] top-[40px] right-[0px] border border-gray drop-shadow-sm bg-white rounded-lg">
             <div className="flex items-center gap-[10px] border-b border-gray pb-[12px] pt-[15px] px-[15px]">
-              {userData?.image && (
+              {userData?.image ? (
                 <Image
                   src={userData?.image?.location}
                   height={30}
@@ -67,6 +71,10 @@ export const UserDropdown = ({ userData }: Props) => {
                     borderRadius: "50px",
                   }}
                 />
+              ) : (
+                <div className="flex items-center justify-center rounded-[50px] w-[30px] h-[30px] border border-[#DFDFDF]">
+                  {userData?.name?.substring(0, 2).toUpperCase()}
+                </div>
               )}
               <div className="flex flex-col gap-[2px]">
                 <h1 className="text-xs font-sf-pro text-black">
