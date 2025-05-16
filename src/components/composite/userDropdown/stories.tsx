@@ -8,7 +8,7 @@ const userDataMock = {
   role: "admin",
   companyId: "608312c9058224877052067d",
   image: {
-    originalname: "blob",
+    originalName: "blob",
     mimetype: "image/jpeg",
     size: 42013,
     location:

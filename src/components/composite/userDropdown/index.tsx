@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import { LogOut } from "lucide-react";
@@ -10,13 +10,22 @@ import { capitalizeFirstLetter } from "@/helpers/functions";
 import { SidebarItem } from "../../ui/sidebarItem";
 import { Button } from "@/components/ui/button";
 
+type ImageProps = {
+  Key: string;
+  key: string;
+  location: string;
+  mimetype: string;
+  originalName: string;
+  size: number;
+};
+
 type Props = {
   userData?: {
     name?: string | null;
     email?: string | null;
-    image?: any | null;
+    image?: ImageProps | null;
     companyId?: string | null;
-    role?: any;
+    role?: string | null;
     id?: string | null;
   };
 };
@@ -30,37 +39,41 @@ export const UserDropdown = ({ userData }: Props) => {
 
   return (
     <div className="flex relative items-center z-1 gap-[15px]">
-      <Image
-        src={userData?.image.location}
-        height={30}
-        width={30}
-        alt="user-img"
-        style={{
-          borderRadius: "50px",
-          cursor: "pointer",
-        }}
-        onClick={() => setOpen(true)}
-      />
+      {userData?.image && (
+        <Image
+          src={userData.image.location}
+          height={30}
+          width={30}
+          alt="user-img"
+          style={{
+            borderRadius: "50px",
+            cursor: "pointer",
+          }}
+          onClick={() => setOpen(true)}
+        />
+      )}
 
       {open && (
         <ClickAwayListener onClickAway={() => setOpen(false)}>
           <div className="flex flex-col absolute w-[270px] top-[40px] right-[0px] border border-gray drop-shadow-sm bg-white rounded-lg">
             <div className="flex items-center gap-[10px] border-b border-gray pb-[12px] pt-[15px] px-[15px]">
-              <Image
-                src={userData?.image.location}
-                height={30}
-                width={30}
-                alt="user-img"
-                style={{
-                  borderRadius: "50px",
-                }}
-              />
+              {userData?.image && (
+                <Image
+                  src={userData?.image?.location}
+                  height={30}
+                  width={30}
+                  alt="user-img"
+                  style={{
+                    borderRadius: "50px",
+                  }}
+                />
+              )}
               <div className="flex flex-col gap-[2px]">
                 <h1 className="text-xs font-sf-pro text-black">
                   {userData?.name}
                 </h1>
                 <span className="font-sf-pro text-xs text-darker-gray">
-                  {capitalizeFirstLetter(userData?.role)}
+                  {capitalizeFirstLetter(userData?.role || "")}
                 </span>
               </div>
             </div>

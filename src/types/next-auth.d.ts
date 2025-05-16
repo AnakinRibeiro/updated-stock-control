@@ -1,16 +1,24 @@
 // import { JWT } from "next-auth/jwt";
 
 declare module "next-auth" {
+  interface ImageProps {
+    Key: string;
+    key: string;
+    location: string;
+    mimetype: string;
+    originalName: string;
+    size: number;
+  }
+
   interface Session {
     accessToken?: string;
     user?: {
       id?: string;
       name?: string | null;
       email?: string | null;
-      image?: string | null;
+      image?: ImageProps | null;
       role?: string;
       companyId?: string;
-      image: any;
     };
   }
 
@@ -18,11 +26,10 @@ declare module "next-auth" {
     id?: string;
     name?: string | null;
     email?: string | null;
-    image?: string | null;
+    image?: ImageProps | null;
     role?: string;
     companyId?: string;
     accessToken?: string;
-    image: any;
   }
 }
 
@@ -34,7 +41,7 @@ declare module "next-auth/jwt" {
     name?: string;
     role?: string;
     companyId?: string;
-    image: any;
+    image: ImageProps;
   }
 }
 

@@ -12,8 +12,6 @@ import StockLabel from "@/components/ui/stockLabel";
 
 import { TableColumn } from "@/types/table";
 import { ProductProps } from "@/types/item";
-import { formatPrice } from "@/helpers/functions";
-import { useEffect } from "react";
 
 const handleStatus = (product: ProductProps) => {
   if (product.stockQty >= product.securityStock) {
