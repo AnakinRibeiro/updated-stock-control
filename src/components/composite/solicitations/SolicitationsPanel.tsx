@@ -1,6 +1,7 @@
 "use client";
 
 import { Plus } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { useSolicitations } from "@/hooks/useSolicitations";
 
@@ -90,10 +91,18 @@ const headerItems: Array<TableColumn<SolicitationProps>> = [
 ];
 
 const SolicitationsPanel = () => {
-  const { data, isLoading } = useSolicitations();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const { data, isLoading } = useSolicitations(
+    searchParams.get("search") || ""
+  );
 
   const handleSearch = (value: string) => {
-    console.log(value);
+    const params = new URLSearchParams(searchParams);
+
+    params.set("search", value);
+    router.push(`?${params.toString()}`);
   };
 
   return (

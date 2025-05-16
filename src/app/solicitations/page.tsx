@@ -3,8 +3,6 @@ import SolicitationsTotalizers from "@/components/composite/solicitations/Solici
 import SolicitationsPanel from "@/components/composite/solicitations/SolicitationsPanel";
 
 async function Solicitations() {
-  console.log("RUNNING...");
-
   return (
     <div className="h-screen pt-[40px] pb-[20px]">
       <SolicitationsTotalizers />

@@ -28,10 +28,6 @@ export const UserDropdown = ({ userData }: Props) => {
     await signOut();
   };
 
-  useEffect(() => {
-    console.log(userData);
-  }, []);
-
   return (
     <div className="flex relative items-center z-1 gap-[15px]">
       <Image
@@ -69,7 +65,7 @@ export const UserDropdown = ({ userData }: Props) => {
               </div>
             </div>
 
-            <div className="flex flex-col py-[10px] gap-[4px] px-[8px] border-b border-gray">
+            <div className="flex flex-col py-[8px] px-[8px] border-b border-gray">
               <SidebarItem
                 icon="user"
                 href="/"

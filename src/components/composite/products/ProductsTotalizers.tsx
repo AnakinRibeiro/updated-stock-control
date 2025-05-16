@@ -4,11 +4,11 @@ import { CircleDollarSign } from "lucide-react";
 import Skeleton from "@mui/material/Skeleton";
 
 import { formatPrice } from "@/helpers/functions";
-import { useTotalizers } from "@/hooks/useSolicitations";
+import { useTotalizers } from "@/hooks/useProducts";
 import Graph from "@/components/ui/graph";
 import TotalizerValue from "@/components/ui/totalizerValue";
 
-const SolicitationsTotalizers = () => {
+const ProductsTotalizers = () => {
   const { data, isLoading } = useTotalizers();
 
   return (
@@ -22,9 +22,9 @@ const SolicitationsTotalizers = () => {
           <TotalizerValue
             label="valor total das solicitações"
             value={formatPrice(
-              data.concluded.priceSum +
-                data.pending.priceSum +
-                data.cancelled.priceSum
+              data.inStock.priceSum +
+                data.lowStock.priceSum +
+                data.outOfStock.priceSum
             )}
           />
         ) : (
@@ -41,20 +41,20 @@ const SolicitationsTotalizers = () => {
             data={[
               {
                 label: "cancelled",
-                qty: data.cancelled.count,
-                value: data.cancelled.priceSum,
+                qty: data.inStock.count,
+                value: data.inStock.priceSum,
                 color: "bg-red-500",
               },
               {
                 label: "pending",
-                qty: data.pending.count,
-                value: data.pending.priceSum,
+                qty: data.lowStock.count,
+                value: data.lowStock.priceSum,
                 color: "bg-light-black",
               },
               {
                 label: "concluded",
-                qty: data.concluded.count,
-                value: data.concluded.priceSum,
+                qty: data.outOfStock.count,
+                value: data.outOfStock.priceSum,
                 color: "bg-emerald-400",
               },
             ]}
@@ -67,4 +67,4 @@ const SolicitationsTotalizers = () => {
   );
 };
 
-export default SolicitationsTotalizers;
+export default ProductsTotalizers;

@@ -28,9 +28,9 @@ export function useTotalizers() {
   });
 }
 
-export function useSolicitations() {
+export function useSolicitations(search: string) {
   return useQuery<RequestDataProps>({
-    queryKey: ["solicitations"],
+    queryKey: ["solicitations", search],
     queryFn: async () => {
       const session = await getSession();
       const token = session?.accessToken;
