@@ -52,7 +52,10 @@ export const UserDropdown = ({ userData }: Props) => {
           onClick={() => setOpen(true)}
         />
       ) : (
-        <div className="flex items-center justify-center rounded-[50px] w-[30px] h-[30px] border border-[#DFDFDF]">
+        <div
+          onClick={() => setOpen(true)}
+          className="flex items-center justify-center rounded-[50px] w-[30px] h-[30px] border border-[#DFDFDF]"
+        >
           {userData?.name?.substring(0, 2).toUpperCase()}
         </div>
       )}
