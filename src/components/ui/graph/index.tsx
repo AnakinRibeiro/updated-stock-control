@@ -14,18 +14,8 @@ type GraphProps = {
 };
 
 const Graph = ({ data }: GraphProps) => {
-  const handleTotalData = () => {
-    let total = 0;
-
-    data.forEach((item) => {
-      total = total + item.qty;
-    });
-
-    return total;
-  };
-
   const calcPercentage = (index: number) => {
-    const total = handleTotalData();
+    const total = data.reduce((sum, item) => sum + item.qty, 0);
 
     return (data[index].qty / total) * 100;
   };
@@ -35,7 +25,7 @@ const Graph = ({ data }: GraphProps) => {
       <span className="font-rubik text-sm text-light-black">
         <strong className="font-rubik text-base text-black">
           {" "}
-          {handleTotalData()}{" "}
+          {data.reduce((sum, item) => sum + item.qty, 0)}{" "}
         </strong>
         solicitações
       </span>
@@ -45,6 +35,7 @@ const Graph = ({ data }: GraphProps) => {
             (item, i) =>
               item.qty > 0 && (
                 <div
+                  data-testid="graph-bar"
                   className={clsx("h-[6px] rounded-sm", item.color)}
                   style={{
                     width: `${calcPercentage(i)}%`,

@@ -51,7 +51,9 @@ export const InputText = ({
   return (
     <div className={`font-rubik flex flex-col text-base text-gray-500`}>
       {!!label && (
-        <label className={`${!!error && "text-red-400"}`}>{label}</label>
+        <label htmlFor="inputLabel" className={`${!!error && "text-red-400"}`}>
+          {label}
+        </label>
       )}
 
       <input
